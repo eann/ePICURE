@@ -39,8 +39,10 @@ class VectorSpace:
         return [0]
 
     def eval(self, c, x):
-		"""eval(c,x)
-			Evaluates vector c (given as a list of basis coefficients) at point x."""
+		"""
+		eval(c,x)
+		Evaluates vector c (given as a list of basis coefficients) at point x.
+		"""
         assert len(c) == self.n_dofs, \
             'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(c))
         # Find the cell where x lies:
