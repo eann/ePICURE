@@ -51,15 +51,7 @@ class VectorSpace:
         for i in xrange(self.n_dofs):
             y += self.basis(i)(x)*coeffs[i]
     
-<<<<<<< HEAD
-    def element(self, c):
-        """  VectorSpace.element(c): a callable function, representing sum(c[i] * basis[i]), which exploits the locality of the basis functions """
-        assert len(c) == self.n_dofs, \
-            'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(c))
-        return lambda x: self.eval(c, x)
-=======
     def element(self, coeffs):
         assert len(coeffs) == self.n_dofs, \
             'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(coeffs))
         return lambda x: self.eval(coeffs, x)
->>>>>>> afa6c1d... Fixed variables names
