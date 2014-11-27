@@ -38,21 +38,28 @@ class VectorSpace:
         self.check_index(i)
         return [0]
 
-    def eval(self, c, x):
+    def eval(self, coeffs, x):
         """
-        eval(c,x)
+        eval(coeffs,x)
         Evaluates vector c (given as a list of basis coefficients) at point x.
         """
-        assert len(c) == self.n_dofs, \
-            'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(c))
+        assert len(coeffs) == self.n_dofs, \
+            'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(coeffs))
         # Find the cell where x lies:
         y = 0*x
         # TBD: make this function aware of locality
         for i in xrange(self.n_dofs):
-            y += self.basis(i)(x)*c[i]
+            y += self.basis(i)(x)*coeffs[i]
     
+<<<<<<< HEAD
     def element(self, c):
         """  VectorSpace.element(c): a callable function, representing sum(c[i] * basis[i]), which exploits the locality of the basis functions """
         assert len(c) == self.n_dofs, \
             'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(c))
         return lambda x: self.eval(c, x)
+=======
+    def element(self, coeffs):
+        assert len(coeffs) == self.n_dofs, \
+            'Incompatible vector. It should have length %. It has lenght %'.format(self.n_dofs, len(coeffs))
+        return lambda x: self.eval(coeffs, x)
+>>>>>>> afa6c1d... Fixed variables names
